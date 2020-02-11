@@ -6,6 +6,7 @@ void on_start(GtkButton *button, gpointer user_data)
     g_print("on_start()\n");
 }
 
+
 // Main function.
 int main (int argc, char *argv[])
 {
@@ -16,7 +17,7 @@ int main (int argc, char *argv[])
     // (Exits if an error occurs.)
     GtkBuilder* builder = gtk_builder_new();
     GError* error = NULL;
-    if (gtk_builder_add_from_file(builder, "interface.glade", &error) == 0)
+    if (gtk_builder_add_from_file(builder, "plain.glade", &error) == 0)
     {
         g_printerr("Error loading file: %s\n", error->message);
         g_clear_error(&error);

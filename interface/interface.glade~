@@ -12,9 +12,8 @@
         <property name="visible">True</property>
         <property name="can_focus">True</property>
         <child>
-          <object class="GtkButton" id="start_button">
-            <property name="label" translatable="yes">start_button</property>
-            <property name="name">start_button</property>
+          <object class="GtkButton" id="start">
+            <property name="label" translatable="yes">button</property>
             <property name="visible">True</property>
             <property name="can_focus">True</property>
             <property name="receives_default">True</property>
