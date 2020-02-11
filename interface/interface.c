@@ -1,34 +1,39 @@
-#include <stdlib.h>
 #include <gtk/gtk.h>
 
-void OnDestroy(GtkWidget *pWidget, gpointer pData);
-
-int main(int argc,char **argv)
+// Signal handler for the "clicked" signal of the start button.
+void on_start(GtkButton *button, gpointer user_data)
 {
-    /* Déclaration du widget */
-    GtkWidget *pWindow;
-    gtk_init(&argc,&argv);
-    
-    /* Création de la fenêtre */
-    pWindow = gtk_window_new(GTK_WINDOW_TOPLEVEL);
-    /* Définition de la position */
-    gtk_window_set_position(GTK_WINDOW(pWindow), GTK_WIN_POS_CENTER);
-    /* Définition de la taille de la fenêtre */
-    gtk_window_set_default_size(GTK_WINDOW(pWindow), 320, 200);
-    /* Titre de la fenêtre */
-    gtk_window_set_title(GTK_WINDOW(pWindow), "Chapitre I.");
-    /* Connexion du signal "destroy" */
-    g_signal_connect(G_OBJECT(pWindow), "destroy", G_CALLBACK(OnDestroy), NULL);
-    /* Affichage de la fenetre */
-    gtk_widget_show(pWindow);
-    /* Démarrage de la boucle événementielle */
-    gtk_main();
-    
-    return EXIT_SUCCESS; 
+    g_print("on_start()\n");
 }
 
-void OnDestroy(GtkWidget *pWidget, gpointer pData)
+// Main function.
+int main (int argc, char *argv[])
 {
-    /* Arrêt de la boucle événementielle */
-    gtk_main_quit();
+    // Initializes GTK.
+    gtk_init(NULL, NULL);
+
+    // Loads the UI description and builds the UI.
+    // (Exits if an error occurs.)
+    GtkBuilder* builder = gtk_builder_new();
+    GError* error = NULL;
+    if (gtk_builder_add_from_file(builder, "interface.glade", &error) == 0)
+    {
+        g_printerr("Error loading file: %s\n", error->message);
+        g_clear_error(&error);
+        return 1;
+    }
+
+    // Gets the widgets.
+    GtkWindow* window = GTK_WINDOW(gtk_builder_get_object(builder, "org.gtk.duel"));
+    GtkButton* start_button = GTK_BUTTON(gtk_builder_get_object(builder, "start_button"));
+
+    // Connects signal handlers.
+    g_signal_connect(window, "destroy", G_CALLBACK(gtk_main_quit), NULL);
+    g_signal_connect(start_button, "clicked", G_CALLBACK(on_start), NULL);
+
+    // Runs the main loop.
+    gtk_main();
+
+    // Exits.
+    return 0;
 }
