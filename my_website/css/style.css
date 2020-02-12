@@ -1,0 +1,56 @@
+
+nav.menu_nav ul li.btn{
+	list-style: none;
+	display: inline-block;
+}
+
+nav.menu_nav ul li.btn a{
+	color: #267ECA;
+	text-decoration: none;
+	padding: 10px;
+	font-size: 25px;
+}
+
+nav.menu_nav ul li.btn:hover a{
+	color: white; 
+}
+
+
+
+
+nav.menu_nav ul li.btn1{
+	list-style: none;
+	font-size: 35px;
+}
+
+nav.menu_nav ul li.btn1 a{
+	color: #267ECA;
+	text-decoration: none;
+	padding: 10px;
+}
+
+nav.menu_nav ul li.btn1:hover a{
+	color: #163763 ;
+}
+
+
+
+
+p{
+	color: #ffffff;
+}
+
+body{
+	background-color: #293133;
+}
+
+h1.size{
+	color: #fff;
+	font-size: 50px;
+	font-weight: bold;
+	text-align: center;
+}
+
+a{
+	opacity: 0.95;
+}
