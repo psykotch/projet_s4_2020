@@ -31,7 +31,6 @@ void action(int x, SDL_Surface* image_surface)
         binarization(image_surface);
         display_image(image_surface);
     }
-
 }
 
 void menu()
@@ -84,7 +83,7 @@ void menu()
 
         system("clear");
 
-        printf("| 0 | CONTINUE |\n| 1 | RESET |\n| 2 | OPEN FILE\n| 3 | QUIT |\n");
+        printf("| 0 | CONTINUE \n| 1 | RESET \n| 2 | OPEN FILE\n| 3 | SAVE \n| 4 | QUIT\n\n");
         printf("choice: ");
         scanf("%d",&exit);   
         printf("\n");
@@ -98,9 +97,11 @@ void menu()
         if (exit == 2)
         {
             system("clear");
-            printf("***PHOTOSHOP*** \n");
+            printf("*** PHOTOEDIT *** \n");
             printf("\n");
-            printf("Choose a file: ");
+            printf("*** CHOOSE FILE ***\n\n");
+            printf("File: ");
+
             char txt[] = "";
             scanf("%s",&txt);
             strcpy(file, txt);
@@ -108,7 +109,18 @@ void menu()
             image_surface = load_image(file);
             display_image(image_surface);
         }
-    } while (!exit || exit == 1 || exit == 2);
+
+        if (exit == 3)
+        {
+            system("clear");
+            printf("*** PHOTOEDIT *** \n");
+            printf("*** SAVE FILE ***\n\n");
+            SDL_SaveBMP(image_surface, "out.bmp");
+            printf("File Saved.");
+            exit = 0;
+        }
+
+    } while (exit != 4);
     
     SDL_FreeSurface(image_surface);
     SDL_FreeSurface(screen_surface);

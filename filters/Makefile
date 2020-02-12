@@ -17,5 +17,6 @@ clean:
 	${RM} *.o
 	${RM} *.d
 	${RM} display
+	${RM} *.bmp
 	
 # END
