@@ -1,18 +1,34 @@
-# Makefile
+# change application name here (executable output name)
+TARGET=image_viewer
 
-CC = gcc
-CFLAGS = `pkg-config --cflags gtk+-3.0` -Wall -O3
-LDLIBS = `pkg-config --libs gtk+-3.0`
 
-EXE = plain disc state paddles duel
+# compiler
+CC=gcc
+# debug
+DEBUG=-g
+# optimisation
+OPT=-O0
+# warnings
+WARN=-Wall
 
-all: $(EXE)
+PTHREAD=-pthread
 
-$(foreach f, $(EXE), $(eval $(f):))
+CCFLAGS=$(DEBUG) $(OPT) $(WARN) $(PTHREAD) -pipe
 
-.PHONY: clean
+GTKLIB=`pkg-config --cflags --libs gtk+-3.0`
 
+# linker
+LD=gcc
+LDFLAGS=$(PTHREAD) $(GTKLIB) -export-dynamic
+
+OBJS=    main.o
+
+all: $(OBJS)
+	$(LD) -o $(TARGET) $(OBJS) $(LDFLAGS)
+    
+main.o: src/main.c
+	$(CC) -c $(CCFLAGS) src/main.c $(GTKLIB) -o main.o
+    
 clean:
-	${RM} $(EXE)
+	rm -f *.o $(TARGET)
 
-# END
