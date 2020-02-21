@@ -1,4 +1,4 @@
-
+/*Menu principal*/
 nav.menu_nav ul li.btn{
 	list-style: none;
 	display: inline-block;
@@ -17,7 +17,7 @@ nav.menu_nav ul li.btn:hover a{
 
 
 
-
+/*Menu/Archives*/
 nav.menu_nav ul li.btn1{
 	list-style: none;
 	font-size: 35px;
@@ -36,15 +36,17 @@ nav.menu_nav ul li.btn1:hover a{
 
 
 
-
+/*text principal*/
 p{
 	color: #ffffff;
 }
 
+/*color background*/
 body{
 	background-color: #293133;
 }
 
+/*titre principal*/
 h1.size{
 	color: #fff;
 	font-size: 50px;
@@ -52,6 +54,18 @@ h1.size{
 	text-align: center;
 }
 
+/*lien*/
 a{
 	opacity: 0.95;
+	color: #D7D1D1;
+	text-decoration: none;
+}
+
+/*Bas de page*/
+footer p{
+	color: #D7D1D1;
+}
+
+footer:hover a{
+	color: white;
 }
