@@ -21,6 +21,7 @@ nav.menu_nav ul li.btn:hover a{
 nav.menu_nav ul li.btn1{
 	list-style: none;
 	font-size: 35px;
+	padding-top: 15px;
 }
 
 nav.menu_nav ul li.btn1 a{
